@@ -81,12 +81,12 @@ var app = {
 
     list: function(e) { 
         deviceList.innerHTML = ""; // clear the list 
-        app.showProgressIndicator("Scanning for Bluetooth Devices...");        
+        app.showProgressIndicator("Scan des appareils bluetooth...");        
         bluetoothSerial.list(app.onDeviceList, function() { alert("Listing Bluetooth Devices Failed"); });        
     },
     connect: function (e) {        
         var device = e.target.dataset.deviceId;
-        app.showProgressIndicator("Requesting connection to " + device);
+        app.showProgressIndicator("Connexion à " + device);
         bluetoothSerial.connect(device, app.onConnect, app.onDisconnect);                                    
     },
     disconnect: function (e) {
@@ -94,20 +94,20 @@ var app = {
             e.preventDefault();
         }
 
-        app.setStatus("Disconnecting...");
+        app.setStatus("Deconnexion...");
         bluetoothSerial.disconnect(function() {
-            app.setStatus("Disconnected");
+            app.setStatus("Deconnecté");
             setTimeout(app.list, 800);
         });        
     },
     onConnect: function() {        
         app.showUnlockScreen();                
-        app.setStatus("Connected");
+        app.setStatus("Connecté");
         bluetoothSerial.subscribe("\n", app.onData);        
     },
     onDisconnect: function(reason) {
         if (!reason) { 
-            reason = "Connection Lost"; 
+            reason = "Connexion perdue"; 
         } 
         app.setStatus(reason);
         
@@ -138,17 +138,17 @@ var app = {
         if (devices.length === 0) {
             
             if (cordova.platformId === "ios") { // BLE
-                app.setStatus("No Bluetooth Peripherals Discovered.");
+                app.setStatus("Pas de périphérique.");
             } else { // Android
-                app.setStatus("Please Pair a Bluetooth Device.");
+                app.setStatus("Appairez le périphérique.");
             }
 
         } else {
-            app.setStatus("Found " + devices.length + " device" + (devices.length === 1 ? "." : "s."));
+            app.setStatus(devices.length + " périphérique trouvé" + (devices.length === 1 ? "." : "s."));
         }
     },
     showProgressIndicator: function(message) {
-        if (!message) { message = "Processing"; }
+        if (!message) { message = "En cours"; }
         scrim.firstElementChild.innerHTML = message;        
         scrim.hidden = false;
         statusDiv.innerHTML = "";        

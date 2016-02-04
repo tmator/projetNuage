@@ -61,7 +61,21 @@ void loop() {
     {
       Serial.print("Variable etatAir : ");   
       Serial.println(etatAir);
-     }
+    }
+
+    //suivant l'état on fait des actions
+    if (etatAir=="bon")
+    {
+      //action a faire quand l'air est bon
+    }
+    else if (command=="moyen")
+    {
+      //action a faire quand l'air est moyen
+    }      
+    else if (command=="mauvais")
+    {
+      //action a faire quand l'air est pas bon du tout
+    }
    
   }
  
