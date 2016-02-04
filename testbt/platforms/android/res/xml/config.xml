@@ -9,12 +9,12 @@
         <param name="android-package" value="com.megster.cordova.BluetoothSerial" />
     </feature>
     <allow-intent href="market:*" />
-    <name>HelloCordova</name>
+    <name>Air</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Air
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+        Nuage team
     </author>
     <content src="index.html" />
     <access origin="*" />
