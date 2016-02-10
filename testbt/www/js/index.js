@@ -47,7 +47,7 @@ var app = {
         }
               
         //on envoie la commande "bon" via bluetooth" 
-        var command = "bon";
+        var command = "g\n";
         bluetoothSerial.write(command, success, failure); 
     },  
     moyen: function() {
@@ -63,7 +63,7 @@ var app = {
         }
               
         //on envoie la commande "moyen" via bluetooth" 
-        var command = "moyen";
+        var command = "m\n";
         bluetoothSerial.write(command, success, failure); 
     },  
 
@@ -80,7 +80,7 @@ var app = {
         }
               
         //on envoie la commande "mauvais" via bluetooth" 
-        var command = "mauvais";
+        var command = "b\n";
         bluetoothSerial.write(command, success, failure); 
     },  
 
